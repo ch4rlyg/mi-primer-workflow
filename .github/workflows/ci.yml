@@ -44,3 +44,13 @@ jobs:
       # PASO 5: Mensaje de éxito
       - name: ✅ Pipeline completado
         run: echo "🎉 CI Pipeline ejecutado exitosamente"
+  lint:
+    name: Ejecutar Pruebas
+    runs-on: ubuntu-latest      # runner: Ubuntu más reciente
+    steps:
+      - name: 📥 Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Validate lines
+        run: |
+          awk 'length > 80' test.sh
